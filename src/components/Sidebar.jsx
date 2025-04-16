@@ -31,6 +31,7 @@ const Sidebar = () => {
         >
           <Menu size={24} />
         </motion.button>
+        <hr className='mt-4' />
         <nav className='mt-8 flex-grow'>
             {SIDEBAR_ITEMS.map((item) => (
                 <Link key={item.href} to={item.href}>
