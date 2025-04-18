@@ -159,7 +159,7 @@ const UsersTable = () => {
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <td className='px-6 py-4 whitespace-nowrap text-gray-300'>{index + 1}</td>
+                  <td className='px-6 py-4 whitespace-nowrap text-gray-300'>{anggota.id}</td>
                   <td className='px-6 py-4 whitespace-nowrap'>
                     <div className='flex items-center'>
                       <div className='flex-shrink-0 h-10 w-10'>
