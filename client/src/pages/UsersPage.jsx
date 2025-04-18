@@ -31,7 +31,7 @@ const UsersPage = () => {
 
   return (
     <div className='flex-1 overflow-auto relative z-10'>
-      <Header title='Users' />
+      <Header title='Anggota DIGCITY' />
       <main className='max-w-7xl mx-auto py-6 px-4 lg:px-8'>
         <motion.div
           className='grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5 mb-8'
@@ -71,11 +71,13 @@ const UsersPage = () => {
           />
         </motion.div>
         <UsersTable />
-        <div className='grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8'>
+        {/*<div className='grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8'>
           <UserGrowthChart />
           <UserActivityHeatmap />
           <UserDemographicsChart />
         </div>
+        <div className="mt-8">
+        </div>*/}
       </main>
     </div>
   );

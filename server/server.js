@@ -33,14 +33,14 @@ app.get("/anggota", (req, res) => {
     });
   });
 
-app.get('/anggota/stats', (req, res) => {
+  app.get('/anggota/stats', (req, res) => {
     const sql = `
       SELECT
         COUNT(*) AS total_users,
-        SUM(CASE WHEN status_keanggotaan = 'Aktif' THEN 1 ELSE 0 END) AS active_users,
-        SUM(CASE WHEN status_keanggotaan != 'Aktif' THEN 1 ELSE 0 END) AS inactive_users,
-        SUM(CASE WHEN sanksi = 'Baik' THEN 1 ELSE 0 END) AS predikat_baik,
-        SUM(CASE WHEN sanksi != 'Baik' THEN 1 ELSE 0 END) AS predikat_buruk
+        SUM(CASE WHEN LOWER(status_keanggotaan) = 'aktif' THEN 1 ELSE 0 END) AS active_users,
+        SUM(CASE WHEN LOWER(status_keanggotaan) != 'aktif' THEN 1 ELSE 0 END) AS inactive_users,
+        SUM(CASE WHEN LOWER(sanksi) = 'baik' THEN 1 ELSE 0 END) AS predikat_baik,
+        SUM(CASE WHEN LOWER(sanksi) != 'baik' THEN 1 ELSE 0 END) AS predikat_buruk
       FROM data_anggota
     `;
     db.query(sql, (err, result) => {
@@ -48,6 +48,7 @@ app.get('/anggota/stats', (req, res) => {
       res.json(result[0]);
     });
   });
+  
   
 
 app.listen(port, () => {

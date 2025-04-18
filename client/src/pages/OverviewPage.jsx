@@ -6,7 +6,31 @@ import SalesOverviewChart from "../components/overview/SalesOverviewChart";
 import CategoryDistributionChart from "../components/overview/CategoryDistributionChart";
 import SalesChannelChart from "../components/overview/SalesChannelChart";
 
+import axios from "axios";
+import { useEffect, useState } from "react";
+
+
+
 const OverviewPage = () => {
+
+  const [stats, setStats] = useState({
+    total_users: 0,
+    active_users: 0,
+    inactive_users: 0,
+    predikat_baik: 0,
+    predikat_buruk: 0,
+  });
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    axios.get("/anggota/stats")
+      .then(res => {
+        setStats(res.data);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
+
   return (
     <div className="flex-1 overflow-auto relative z-10">
       <Header title="Overview" />
@@ -27,9 +51,9 @@ const OverviewPage = () => {
             color="#6366F1"
           />
           <StatCard
-            name="New Users"
+            name="Total Anggota Aktif"
             icon={Users}
-            value="1,234"
+            value={loading ? "..." : stats.active_users.toLocaleString()}
             color="#8B5CF6"
           />
           <StatCard
