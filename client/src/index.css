@@ -6,3 +6,65 @@
 html {
   font-family: "Poppins", system-ui, sans-serif;
 }
+
+.react-select__control {
+    @apply bg-blue-950 border border-blue-800 rounded-md;
+  }
+  
+  .react-select__single-value {
+    @apply text-white;
+  }
+  
+  .react-select__input input {
+    @apply text-white;
+  }
+  
+  .react-select__menu {
+    @apply bg-blue-900 border border-blue-700;
+  }
+  
+  .react-select__option {
+    @apply text-white hover:bg-blue-700;
+  }
+  
+  .react-select__placeholder {
+    @apply text-gray-400;
+  }
+  
+  /* Sesuaikan dengan warna tema aplikasi */
+.Toastify__toast--success {
+  background-color: #4ade80 !important; /* hijau */
+}
+
+.Toastify__toast--error {
+  background-color: #f87171 !important; /* merah */
+}
+
+.Toastify__toast--info {
+  background-color: #60a5fa !important; /* biru */
+}
+
+.Toastify__toast--warning {
+  background-color: #fbbf24 !important; /* kuning */
+}
+
+/* Untuk tema gelap */
+.Toastify__toast {
+  background-color: #1e293b !important; /* slate-800 */
+  color: #e2e8f0 !important; /* slate-200 */
+}
+
+@layer utilities {
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  .scrollbar-thumb-blue-800::-webkit-scrollbar-thumb {
+    background-color: rgba(30, 64, 175, 0.5);
+    border-radius: 20px;
+  }
+  
+  .scrollbar-track-transparent::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+}

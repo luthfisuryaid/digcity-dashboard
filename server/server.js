@@ -19,11 +19,11 @@ const db = mysql.createConnection({
 
 })
 
-// Konfigurasi CORS dengan benar
 app.use(cors({ 
-    credentials: true, 
-    origin: "http://localhost:3000" // Sesuaikan dengan port frontend React Anda
-  }));
+  credentials: true, 
+  origin: ["http://localhost:3000", "http://localhost:5173"]
+}));
+
 
 app.get("/anggota", (req, res) => {
     const sql = "SELECT * FROM data_anggota";
@@ -48,7 +48,32 @@ app.get("/anggota", (req, res) => {
       res.json(result[0]);
     });
   });
-  
+
+  app.put("/anggota/:id", (req, res) => {
+    const anggotaId = req.params.id;
+    const updatedData = req.body;
+    
+    const sql = "UPDATE data_anggota SET ? WHERE id = ?";
+    db.query(sql, [updatedData, anggotaId], (err, result) => {
+      if (err) {
+        console.error("Error updating member:", err);
+        return res.status(500).json({ success: false, message: "Server error" });
+      }
+      
+      if (result.affectedRows === 0) {
+        return res.status(404).json({ success: false, message: "Anggota tidak ditemukan" });
+      }
+      
+      // Ambil data yang telah diupdate untuk dikembalikan
+      const selectSql = "SELECT * FROM data_anggota WHERE id = ?";
+      db.query(selectSql, [anggotaId], (err, rows) => {
+        if (err) {
+          return res.status(500).json({ success: false, message: "Server error" });
+        }
+        return res.json(rows[0]); // Kembalikan data anggota yang sudah diupdate
+      });
+    });
+  });
   
 
 app.listen(port, () => {
