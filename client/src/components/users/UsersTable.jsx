@@ -286,7 +286,7 @@ const UsersTable = () => {
             {/* Tombol + untuk Tambah Anggota (Tanpa Teks) */}
             <button
               onClick={() => setIsTambahModalOpen(true)}
-              className="h-10 w-10 flex items-center justify-center rounded-full bg-green-600 text-white hover:bg-green-700 transition-colors shadow-lg hover:shadow-xl transform hover:scale-105 transition-transform"
+              className="h-10 w-10 flex items-center justify-center rounded-full bg-green-600 text-white hover:bg-green-700 transition-colors shadow-lg hover:shadow-xl transform hover:scale-105"
               title="Tambah Anggota Baru"
             >
               <Plus size={20} strokeWidth={2.5} />
